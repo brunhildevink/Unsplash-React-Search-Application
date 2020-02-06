@@ -1,34 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Unsplash, { toJson } from "unsplash-js";
-import $ from 'jquery';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
 
-function App() {
 
-    const fetch = require('node-fetch');
-    global.fetch = fetch;
-    let clientId = "2a1120b968b317bb1d590468bfda81a6584cc506329f39222f2698a19d189ac0";
-    let url = "https://api.unsplash.com/photos/?client_id=" + clientId;
-    fetch(url)
+class App extends Component {
+  constructor() {
+    super();
+    this.state = { data: [] };
+  }
 
-    .then((response) => {
-      return response.json();
-    })
-    .then((myJson) => {
+  async componentDidMount() {
+    const clientId = "2a1120b968b317bb1d590468bfda81a6584cc506329f39222f2698a19d189ac0";
+    const url = "https://api.unsplash.com/photos/?client_id=" + clientId;
+    const response = await fetch(url)
+    const json = await response.json();
+    const result = json.map(photo => photo.urls.regular)
+    this.setState({ data: result })
+  }
 
-      myJson.forEach(photo => {
-        console.log(photo)
-        let result = `<img src=${photo.urls.regular}/>`;
-        $("#result").append(result);
-      });
-    });
-
+  render() {
     return (
-
-      <div className="App" id="result">
+      <div>
+        <ul>
+          {this.state.data.map(url => (
+            <img src={url} />
+          ))}
+        </ul>
       </div>
     );
+  }
 }
 
 export default App;
