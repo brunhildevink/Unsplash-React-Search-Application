@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 class App extends Component {
@@ -13,19 +16,29 @@ class App extends Component {
     const url = "https://api.unsplash.com/photos/?client_id=" + clientId;
     const response = await fetch(url)
     const json = await response.json();
-    const result = json.map(photo => photo.urls.regular)
+    const result = json.map(photo => photo.urls.thumb)
     this.setState({ data: result })
   }
 
+
+
   render() {
     return (
-      <div>
-        <ul>
-          {this.state.data.map(url => (
-            <img src={url} />
+      <Container>
+
+        <h1>React test!</h1>
+
+        <form>
+          <input placeholder="Search photos..." id="searchInput"></input>
+          <button id="searchButton">Search</button>
+        </form>
+
+        <Row>
+          {this.state.data.map((url, key) => (
+            <Col md={4} key={key}><a href="#"><img src={url} /></a></Col>
           ))}
-        </ul>
-      </div>
+        </Row>
+      </Container>
     );
   }
 }
