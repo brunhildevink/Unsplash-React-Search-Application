@@ -46,36 +46,42 @@ class Images extends Component {
     const result = json.map(photo => photo)
     this.setState({ data: result })
   }
-
-  handleDetailsPage(props) {
-    console.log(props);
-  }
   
   render() {
     return (
 
       <Container>
+        <h1 className="title">Good day Yummygum!</h1>
+        <Row>
+          <Col>
+            <form onSubmit={this.handleSubmit}>
+            <input onChange={this.handleSearch} placeholder="Search photos..." id="searchInput" ></input>
+            <button id="searchButton">Search</button>
+            </form>
+          </Col>
+        </Row>
 
-        <form onSubmit={this.handleSubmit}>
-        <input onChange={this.handleSearch} placeholder="Search photos..." id="searchInput" ></input>
-        <button id="searchButton">Search</button>
-        </form>
 
         <Row>
           {this.state.data.map((photo, key) => (
             <Col md={4} key={key} className="card_container">
-                <a onClick={this.handleDetailsPage}>
-                <img src={photo.urls.thumb} />
-                <div className="card_description">
-                  <p>{photo.width} x {photo.height}</p>
-                  <p>{photo.user.name}</p>
-                  <p>{photo.created_at}</p>
+              <a target="_blank" href={"https://unsplash.com/photos/" + photo.id}>
+                <img src={photo.urls.small} />
+                <div className="card_description" id={key} >
+                  <h1 className="card_description_username">{photo.user.name}</h1>
                   <p>{photo.description}</p>
+                  <p><strong>Publish date:</strong> {photo.created_at}</p>
+                  <p><strong>Likes:</strong> {photo.likes}</p>
+                  {/* <p>Views: {photo.views}</p> */}
+                  {/* <p>Downloads: {photo.downloads}</p> */}
+                  <p><strong>Dimensions:</strong> {photo.width} x {photo.height}</p>
                 </div>
                 </a>
             </Col>
           ))}
         </Row>
+
+        <p className="footer_note">That's it Yummygum ❤️</p>
 
       </Container>
     );

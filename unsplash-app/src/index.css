@@ -1,3 +1,7 @@
+a {
+  text-decoration: none !important;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +9,106 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Gothic A1', sans-serif;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.title {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.card_description {
+  display: block;
+}
+
+.card_description_username {
+  font-size: 24px;
+  color: #060606 !important;
+}
+
+.card_description p {
+  margin-bottom: 4px;
+  color: #494949;
+}
+
+.card_container {
+  overflow: hidden;
+  margin: 10px 0;
+  height: auto;
+  display: inline-block !important;
+  transition: .5s;
+}
+
+.card_container:hover {
+  background-color: #f6f6f6;
+  padding: 15px;
+  border-radius: 15px;
+  
+}
+
+form {
+  margin: 50px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#searchInput, 
+#searchButton {
+  display: block;
+  width: 50%;
+  text-align: center;
+  margin: 0 0 5px 0;
+}
+
+img {
+  width: 100%;
+  border-radius: 13px;
+  margin: 0 0 10px 0;
+}
+
+img:hover {
+  /* box-shadow: 0 14px 28px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0.10); */
+}
+
+textarea:focus, input:focus, input{
+  border: none !important;
+  border-bottom: 1px solid black;
+  padding: 4px 2px;
+  height: 50px;
+  background-color: #efefef;
+  border-radius: 5px;
+}
+
+#searchButton {
+  background-color: #E60023;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#searchButton:hover {
+  background-color: #CF001F;
+  transition: .5s;
+}
+
+.footer_note {
+  text-align: center;
+  font-weight: 600;
+  color: #c1c1c1;
+  margin: 25px 0;
+}
+
+
