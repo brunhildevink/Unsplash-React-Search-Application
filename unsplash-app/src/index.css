@@ -36,12 +36,42 @@ code {
   color: #494949;
 }
 
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@-ms-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@-o-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 .card_container {
   overflow: hidden;
   margin: 10px 0;
   height: auto;
   display: inline-block !important;
   transition: .5s;
+  -webkit-animation: fadein 2s;
+       -moz-animation: fadein 2s;
+        -ms-animation: fadein 2s;
+         -o-animation: fadein 2s;
+            animation: fadein 2s;
 }
 
 .card_container:hover {
@@ -70,10 +100,6 @@ img {
   width: 100%;
   border-radius: 13px;
   margin: 0 0 10px 0;
-}
-
-img:hover {
-  /* box-shadow: 0 14px 28px rgba(0,0,0,0.10), 0 10px 10px rgba(0,0,0,0.10); */
 }
 
 textarea:focus, input:focus, input{
