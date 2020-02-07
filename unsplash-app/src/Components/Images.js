@@ -50,7 +50,7 @@ class Images extends Component {
   render() {
     return (
 
-      <Container>
+      <Container className="container-fluid">
         <h1 className="title">Good day Yummygum!</h1>
         <Row>
           <Col>
@@ -64,7 +64,7 @@ class Images extends Component {
 
         <Row>
           {this.state.data.map((photo, key) => (
-            <Col md={4} key={key} className="card_container">
+            <Col md={3} key={key} className="card_container">
               <a target="_blank" href={"https://unsplash.com/photos/" + photo.id}>
                 <img src={photo.urls.small} />
                 <div className="card_description" id={key} >
@@ -72,8 +72,6 @@ class Images extends Component {
                   <p>{photo.description}</p>
                   <p><strong>Publish date:</strong> {photo.created_at}</p>
                   <p><strong>Likes:</strong> {photo.likes}</p>
-                  {/* <p>Views: {photo.views}</p> */}
-                  {/* <p>Downloads: {photo.downloads}</p> */}
                   <p><strong>Dimensions:</strong> {photo.width} x {photo.height}</p>
                 </div>
                 </a>

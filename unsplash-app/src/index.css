@@ -64,8 +64,6 @@ code {
 .card_container {
   overflow: hidden;
   margin: 10px 0;
-  height: auto;
-  display: inline-block !important;
   transition: .5s;
   -webkit-animation: fadein 2s;
        -moz-animation: fadein 2s;
