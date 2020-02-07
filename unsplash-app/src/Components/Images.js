@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-
 class Images extends Component {
   
   constructor() {
@@ -35,8 +34,7 @@ class Images extends Component {
     const response = await fetch(url);
     const json = await response.json();
     const jsonResults = json.results;
-    const result = jsonResults.map(photo => photo.urls.thumb);
-    console.log(this.state)
+    const result = jsonResults.map(photo => photo);
     this.setState({ data: result });
   }
 
@@ -45,12 +43,17 @@ class Images extends Component {
     const url = "https://api.unsplash.com/photos/?client_id=" + clientId;
     const response = await fetch(url)
     const json = await response.json();
-    const result = json.map(photo => photo.urls.thumb)
+    const result = json.map(photo => photo)
     this.setState({ data: result })
+  }
+
+  handleDetailsPage(props) {
+    console.log(props);
   }
   
   render() {
     return (
+
       <Container>
 
         <form onSubmit={this.handleSubmit}>
@@ -59,10 +62,21 @@ class Images extends Component {
         </form>
 
         <Row>
-          {this.state.data.map((url, key) => (
-            <Col md={4} key={key}><a href="#"><img src={url} /></a></Col>
+          {this.state.data.map((photo, key) => (
+            <Col md={4} key={key} className="card_container">
+                <a onClick={this.handleDetailsPage}>
+                <img src={photo.urls.thumb} />
+                <div className="card_description">
+                  <p>{photo.width} x {photo.height}</p>
+                  <p>{photo.user.name}</p>
+                  <p>{photo.created_at}</p>
+                  <p>{photo.description}</p>
+                </div>
+                </a>
+            </Col>
           ))}
         </Row>
+
       </Container>
     );
   }
